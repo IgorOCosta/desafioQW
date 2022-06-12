@@ -1,0 +1,16 @@
+{
+    "participantList": "Lista de Participantes",
+    "participants" : "Participantes",
+    "filter" : "Filtrar",
+    "cleanFilter": "Limpar filtros",
+    "applyFilter": "Aplicar filtros",
+    "filterParticipants": "Filtrar Participantes",
+    "checkinDone": "Check-in realizado",
+    "checkinNotDone": "Check-in não realizado",
+    "filterLabel": "Nome, e-mail, localizador",
+    "ticket": "Ingresso",
+    "batch": "lote",
+    "halfTicket": "Meia entrada",
+    "allAffiliates": "Todos afiliados",
+    "fullTicket": "Ingresso inteiro"
+}
