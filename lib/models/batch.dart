@@ -1,10 +1,7 @@
 class Batch {
- final List<String> batchs;
-
+  final List<String> batchs;
 
   const Batch({
     required this.batchs,
-  
   });
-  
 }
