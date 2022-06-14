@@ -11,6 +11,9 @@
     "ticket": "Ingresso",
     "batch": "lote",
     "halfTicket": "Meia entrada",
-    "allAffiliates": "Todos afiliados",
-    "fullTicket": "Ingresso inteiro"
+    "allAffiliates": "Todos os ingressos",
+    "fullTicket": "Ingresso inteiro",
+    "ticketType": "Tipo ingresso:",
+    "selectTicketType": "Selecionar ingresso",
+    "noParticipants": "Infelizmente não há ninguém na lista :("
 }

@@ -15,34 +15,35 @@ class FilterWithIcon extends StatelessWidget {
         onclick();
       },
       child: Container(
-          // margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-          decoration: BoxDecoration(
-            color: Color(0xFFf3ebf5),
-            border: Border.all(color: Color(0xFFf3ebf5), width: 3.0),
-            borderRadius: BorderRadius.all(Radius.circular(50.0)),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(3.0),
-            child: Row(
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.filter,
-                  style: TextStyle(
-                    color: Color(0xFF6f2694),
-                    fontSize: 18,
-                  ),
+        // margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+        decoration: BoxDecoration(
+          color: Color(0xFFf3ebf5),
+          border: Border.all(color: Color(0xFFf3ebf5), width: 3.0),
+          borderRadius: BorderRadius.all(Radius.circular(50.0)),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(3.0),
+          child: Row(
+            children: [
+              Text(
+                AppLocalizations.of(context)!.filter,
+                style: TextStyle(
+                  color: Color(0xFF6f2694),
+                  fontSize: 18,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Icon(
-                    Icons.commit_rounded,
-                    color: Color(0xFF6f2694),
-                  ),
-                )
-              ],
-            ),
-          )),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Icon(
+                  Icons.commit_rounded,
+                  color: Color(0xFF6f2694),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

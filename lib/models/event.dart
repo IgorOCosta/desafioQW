@@ -3,7 +3,7 @@ import 'package:desafio/models/ticket.dart';
 class Event {
   final int id;
   final String title;
-  final int batchs;
+  final List<String> batchs;
   final List<Ticket> tickets;
 
   const Event({

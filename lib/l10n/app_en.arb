@@ -11,6 +11,9 @@
     "ticket": "Ticket",
     "batch": "Batch",
     "halfTicket": "Half price",
-    "allAffiliates": "All affiliates",
-    "fullTicket": "Fully price"
+    "allAffiliates": "All tickets",
+    "fullTicket": "Fully price",
+    "ticketType": "Ticket type:",
+    "selectTicketType": "Select ticket",
+    "noParticipants": "Unfortunately there is no one on the list :("
 }

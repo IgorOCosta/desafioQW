@@ -33,8 +33,7 @@ class ParticipantWidget extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 5.0),
-                  child: ticket.isHalf? Text(AppLocalizations.of(context)!.halfTicket + " "+ ticket.batch.toString() + "º "+ AppLocalizations.of(context)!.batch) : 
-                  Text(AppLocalizations.of(context)!.ticket + " "+ ticket.batch.toString() + "º "+ AppLocalizations.of(context)!.batch),
+                  child:Text(this.ticket.batch)
                 ),
                 Text(ticket.id),
               ],

@@ -1,4 +1,5 @@
 import 'package:desafio/data/event_data.dart';
+import 'package:desafio/models/batch.dart';
 import 'package:desafio/models/event.dart';
 import 'package:desafio/models/filter.dart';
 import 'package:desafio/pages/participantFilter.dart';
@@ -22,16 +23,12 @@ class ParticipantListPage extends StatefulWidget {
 }
 
 class _ParticipantListPageState extends State<ParticipantListPage> {
-  late List<Event> event;
+  late Event event;
   late List<Ticket> tickets;
-  int batchQuantity = eventList.first.batchs;
-  late Filter filter = Filter(
-      isHalf: true,
-      isInteger: true,
-      isntUsed: true,
-      isUsed: true,
-      batch: [],
-      clean: false);
+  late Batch batch;
+
+  late Filter filter =
+      Filter(isntUsed: true, isUsed: true, batch: [], clean: false);
   String query = '';
 
   @override
@@ -39,9 +36,6 @@ class _ParticipantListPageState extends State<ParticipantListPage> {
     super.initState();
     event = eventList;
     tickets = ticketsList;
-    for (int i = 0; i < batchQuantity; i++) {
-      filter.batch.add(i + 1);
-    }
   }
 
   @override
@@ -82,9 +76,10 @@ class _ParticipantListPageState extends State<ParticipantListPage> {
                       context,
                       MaterialPageRoute(
                         builder: (_) => ParticipantFilterPage(
-                          filter: filter,
+                            filter: filter,
                             applyFilter: applyFilter,
-                            clearFilter: clearFilter,batchs: batchQuantity),
+                            clearFilter: clearFilter,
+                            batchs: event.batchs),
                       ),
                     )
                   },
@@ -93,43 +88,45 @@ class _ParticipantListPageState extends State<ParticipantListPage> {
             ),
           ),
           Expanded(
-            child: ListView.separated(
-              itemCount: tickets.length,
-              separatorBuilder: (context, index) {
-                return Divider(
-                  color: Color(0xFFe6e6e6),
-                  height: 25,
-                  thickness: 2,
-                );
-              },
-              itemBuilder: (context, index) {
-                final ticket = tickets[index];
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: ParticipantWidget(
-                    ticket: ticket,
-                  ),
-                );
-              },
-            ),
-          )
+              child: tickets.length > 0
+                  ? ListView.separated(
+                      itemCount: tickets.length,
+                      separatorBuilder: (context, index) {
+                        return Divider(
+                          color: Color(0xFFe6e6e6),
+                          height: 25,
+                          thickness: 2,
+                        );
+                      },
+                      itemBuilder: (context, index) {
+                        final ticket = tickets[index];
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                          child: ParticipantWidget(
+                            ticket: ticket,
+                          ),
+                        );
+                      },
+                    )
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 25.0),
+                          child: Text(
+                            AppLocalizations.of(context)!.noParticipants,
+                          ),
+                        ),
+                      ],
+                    ))
         ],
       ),
     );
   }
 
   void clearFilter() {
-    this.filter = Filter(
-        isHalf: true,
-        isInteger: true,
-        isntUsed: true,
-        isUsed: true,
-        batch: [],
-        clean: true);
-
-    for (int i = 0; i < batchQuantity; i++) {
-      filter.batch.add(i + 1);
-    }
+    this.filter = Filter(isntUsed: true, isUsed: true, batch: [], clean: true);
 
     applyFilter(this.filter);
   }
@@ -138,18 +135,14 @@ class _ParticipantListPageState extends State<ParticipantListPage> {
     final tickets = ticketsList.where((ticket) {
       final batch = ticket.batch;
       final isUsed = ticket.isUsed;
-      final isHalf = ticket.isHalf;
-      
-        return f.batch.contains(batch) &&
-            (f.isUsed == isUsed || f.isntUsed == !isUsed) &&
-            (f.isHalf == isHalf || f.isInteger == !isHalf);
-      
+
+      return f.batch.contains(batch) &&
+          (f.isUsed == isUsed || f.isntUsed == !isUsed);
     }).toList();
 
     setState(() {
       this.tickets = tickets;
     });
-
   }
 
   void textFilter(String query) {

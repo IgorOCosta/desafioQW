@@ -36,11 +36,14 @@ class _defaultButtonState extends State<defaultButton> {
               borderRadius: BorderRadius.circular(16));
         }),
       ),
-      child: Text(
-        widget.title,
-        style: TextStyle(
-          color: widget.variable ? Colors.white : Colors.black,
-          fontSize: 15,
+      child: FittedBox(
+        fit: BoxFit.fitWidth,
+        child: Text(
+          widget.title,
+          style: TextStyle(
+            color: widget.variable ? Colors.white : Colors.black,
+            fontSize: 15,
+          ),
         ),
       ),
     );

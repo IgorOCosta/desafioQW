@@ -2,7 +2,7 @@ class Ticket {
   final String id;
   final String owner;
   final String emailOwner;
-  final int batch;
+  final String batch;
   final bool isHalf; 
   final bool isUsed;
 
